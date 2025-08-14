@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03_类中的方法this指向</title>
+</head>
+<body>
+<script type="text/javascript">
+    class Person {
+        constructor(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+
+        study() {
+            // study方法放在了哪里？——类的原型对象上，供实例使用
+            // 通过Person实例调用study时，study中的this就是Person实例
+            console.log(this)
+        }
+    }
+
+    const p1 = new Person("tom", 18)
+    p1.study() // 通过实例调用study方法 ==> study中的this是 Person
+    const x = p1.study
+    x() // 通过window调用study ==> study中的this是 undefined（由于类里面已经默认开启了严格模式）
+
+    /*function demo1() {
+        'use strict'
+        console.log(this) // undefined
+    }
+
+    function demo2() {
+        console.log(this) // Window
+    }
+
+    demo1();
+    demo2();*/
+</script>
+</body>
+</html>

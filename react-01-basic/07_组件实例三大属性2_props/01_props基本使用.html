@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="../favicon.ico" />
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01_props基本使用</title>
+</head>
+<body>
+<!--准备好一个“容器”-->
+<div id="test"></div>
+<div id="test2"></div>
+<div id="test3"></div>
+
+<!--引入react核心库-->
+<script type="text/javascript" src="../../js_16.8.4/react.development.js"></script>
+<!--引入react-dom，用于支持react操作DOM-->
+<script type="text/javascript" src="../../js_16.8.4/react-dom.development.js"></script>
+<!--引入babel，用于将jsx转为js-->
+<script type="text/javascript" src="../../js_16.8.4/babel.min.js"></script>
+
+<script type="text/babel">
+    // 1.创建组件
+    class Person extends React.Component {
+        render() {
+            return (
+                <ul>
+                    <li>姓名：{this.props.name}</li>
+                    <li>性别：{this.props.sex}</li>
+                    <li>年龄：{this.props.age + 1}</li>
+                </ul>
+            )
+        }
+    }
+
+    // 2.渲染组件到页面
+    ReactDOM.render(<Person name="tom" age="18" sex="女"/>, document.getElementById("test")) // 非数值类型age+1后显示的结果和预期不一致
+    ReactDOM.render(<Person name="tom" age={18} sex="女"/>, document.getElementById("test2"))
+    let person = {name: "老刘", age: 18, sex: "男"}
+    ReactDOM.render(<Person {...person}/>, document.getElementById("test3"))
+</script>
+</body>
+</html>
