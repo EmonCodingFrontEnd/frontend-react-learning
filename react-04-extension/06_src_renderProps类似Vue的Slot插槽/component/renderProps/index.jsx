@@ -29,8 +29,7 @@ class A extends Component {
                 }}>点击我更新A的名字
                 </button>
             </div>
-        )
-            ;
+        );
     }
 }
 

@@ -25,7 +25,7 @@ export default class Parent extends PureComponent {
                 <h3>我是Parent组件</h3>
                 <span>我的车名字是：{carName}</span>
                 <button onClick={this.changeCar}>点我换车</button>
-                <Child/>
+                <Child carName={carName}/>
             </div>
         );
     }
@@ -41,7 +41,7 @@ class Child extends PureComponent {
         return (
             <div className="child">
                 <h3>我是Child组件</h3>
-                {/*<span>我接到的车是：{this.props.carName}</span>*/}
+                <span>我接到的车是：{this.props.carName}</span>
             </div>
         );
     }

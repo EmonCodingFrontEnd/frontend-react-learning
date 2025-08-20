@@ -5,11 +5,11 @@ class StateDemo extends Component {
 
     add = () => {
         const {count} = this.state;
-        // 对象式更新
+        // 对象式更新，第二个参数是更新后的回调
         /*this.setState({count: count + 1}, () => {
             console.log(this.state.count);
         })*/
-        // 函数式更新
+        // 函数式更新，第二个参数是更新后的回调
         this.setState((preState, props) => ({count: preState.count + 1}), () => console.log(this.state.count))
     }
 

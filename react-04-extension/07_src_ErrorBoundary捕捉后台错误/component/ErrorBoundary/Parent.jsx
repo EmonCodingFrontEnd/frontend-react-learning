@@ -5,7 +5,7 @@ class Parent extends Component {
     state = {hasError: false}
 
     // 当Parent的子组件出现报错的时候，会触发 getDerivedStateFromError 方法，并携带错误信息
-    // 只能捕获后台组件生命周期产生的错误，不能捕获自己组件产生的错误和其他组件在合成事件、定时器中产生的错误
+    // 只能捕获后代组件生命周期产生的错误，不能捕获自己组件产生的错误和其他组件在合成事件、定时器中产生的错误
     static getDerivedStateFromError(error, info) {
         console.log(error, info);
         return {

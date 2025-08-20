@@ -1,8 +1,6 @@
 import React, {Component, lazy, Suspense} from "react";
 import {NavLink, Route} from "react-router-dom";
 import Loading from "./Loading";
-// import About from "./About";
-// import Home from "./Home";
 
 const About = lazy(() => import("./About"))
 const Home = lazy(() => import("./Home"))
