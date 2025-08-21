@@ -9,7 +9,7 @@ class Person extends Component {
     render() {
         return (
             <div>
-                <h1>我是Person组件：当前求和为：{this.props.count}</h1>
+                <h1>我是Person组件：上方组件求和结果：{this.props.count}</h1>
                 <input ref={c => this.nameNode = c} type="text" placeholder="输入名字"/><br/>
                 <input ref={c => this.ageNode = c} type="text" placeholder="输入年龄"/>
                 <button onClick={this.addPerson}>添加</button>
@@ -24,7 +24,6 @@ class Person extends Component {
                         ))
                     }
                 </ul>
-                <h2>上方组件求和结果</h2>
             </div>
         );
     }
