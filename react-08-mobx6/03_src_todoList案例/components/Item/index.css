@@ -1,0 +1,49 @@
+/*item*/
+li {
+    list-style: none;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 5px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+li .edit {
+    width: 100%; /* 宽度100%铺满 */
+    height: 100%; /* 高度100%铺满 */
+    position: absolute; /* 绝对定位 */
+    top: 0;
+    left: 0;
+    box-sizing: border-box; /* 确保边框和内边距包含在尺寸内 */
+}
+
+li .view {
+}
+
+li .view label {
+    float: left;
+    cursor: pointer;
+}
+
+li .view div {
+    display: flex;
+    justify-content: space-between;
+}
+
+li .view div:hover {
+    float: left;
+}
+
+li button {
+    float: right;
+    display: none;
+    margin-top: 3px;
+}
+
+li:before {
+    content: initial;
+}
+
+li:last-child {
+    border-bottom: none;
+}
