@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.box {
+    display: flex;
+}
+
+.left {
+    width: 200px;
+    height: 100vh;
+    background-color: skyblue;
+    position: relative;
+    z-index: 10;
+}
+
+.right {
+    flex-grow: 1;
+    height: 100vh;
+    background-color: pink;
+    position: relative;
+    z-index: 5;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}

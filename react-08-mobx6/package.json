@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.11.0",
     "classnames": "^2.5.1",
+    "dayjs": "^1.11.18",
     "mobx": "^6.13.7",
     "mobx-react-lite": "^4.1.0",
     "nanoid": "^5.1.5",

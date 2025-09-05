@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>生成器函数</title>
+</head>
+<body>
+<script type="text/javascript">
+    function* generator() {
+        console.log('generator开始执行')
+        const input1 = yield 1;
+        console.log('yield 1执行完毕', input1)
+        const input2 = yield 2;
+        console.log('yield 2执行完毕', input2)
+        const input3 = yield 3;
+        console.log('yield 3执行完毕', input3)
+        console.log('generator执行完毕')
+        return 4;
+    }
+
+    let gen = generator();
+    // generator开始执行
+    // 推第1把 {value: 1, done: false}
+    setTimeout(() => {
+        console.log('推第1把', gen.next('a')) // a 并未被yield接收
+
+        // yield 1执行完毕 b
+        // 推第2把 {value: 2, done: false}
+        setTimeout(() => {
+            console.log('推第2把', gen.next('b'))
+
+            // yield 2执行完毕 c
+            // 推第3把 {value: 3, done: false}
+            setTimeout(() => {
+                console.log('推第3把', gen.next('c'))
+
+                // yield 3执行完毕 d
+                // generator执行完毕
+                // 推第4把 {value: 4, done: true}
+                setTimeout(() => {
+                    console.log('推第4把', gen.next('d'))
+                }, 2000)
+            }, 2000)
+        }, 2000)
+    })
+</script>
+</body>
+</html>

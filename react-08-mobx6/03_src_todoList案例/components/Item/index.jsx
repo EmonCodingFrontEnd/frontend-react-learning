@@ -1,5 +1,6 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 import {observer} from "mobx-react-lite";
+import dayjs from "dayjs";
 import classNames from 'classnames';
 import {useRootStore} from "../../stores/index.store";
 import './index.css'
@@ -27,14 +28,13 @@ function Item({todo}) {
         }
     }, [deleteTodo, todo.id]);
 
+    const handleBlur = useCallback(() => {
+        setEditing();
+        setName(editInput.current.value);
+    }, [setEditing, setName, editInput])
+
     const formatTime = useCallback((date) => {
-        return date.toLocaleTimeString('zh-CN', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-            hour: '2-digit',
-            minute: '2-digit'
-        });
+        return dayjs(date).format('YYYY-MM-DD HH:mm');
     }, []);
 
     return (
@@ -44,24 +44,19 @@ function Item({todo}) {
             onMouseLeave={handleMouseLeave}>
             {
                 todo.isEditing
-                    ? <input className={"edit"} onBlur={() => {
-                        setEditing();
-                        setName(editInput.current.value);
-                    }} ref={editInput}/>
+                    ? <input className={"edit"} onBlur={handleBlur}
+                             onKeyDown={(e) => e.key === 'Enter' && handleBlur()}
+                             ref={editInput}/>
                     :
-                    <div className={"view"}>
-                        <label>
+                    <div className={"view"} onDoubleClick={setEditing}>
+                        <div>
                             <input onChange={toggle} type="checkbox" checked={todo.done}/>
-                        </label>
-                        <div onDoubleClick={setEditing}>
                             <span>{todo.name}</span>
-                            <span style={{color: '#ccc',}}>(创建于：{formatTime(todo.createdAt)})</span>
                         </div>
+                        <span style={{color: '#ccc',}}>(创建于：{formatTime(todo.createdAt)})</span>
                     </div>
             }
-            <button onClick={handleDelete} className="btn btn-danger"
-                    style={{display: isHovered ? 'block' : 'none'}}>删除
-            </button>
+            <button onClick={handleDelete} className={classNames('btn btn-danger', {hidden: !isHovered})}>删除</button>
         </li>
     );
 }
