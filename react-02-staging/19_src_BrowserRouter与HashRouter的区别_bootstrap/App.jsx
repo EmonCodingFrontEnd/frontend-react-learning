@@ -13,7 +13,7 @@ export default class App extends Component {
     /*
     BrowserRouter与HashRouter的区别【推荐BrowserRouter】
     1.底层原理不一样：
-        BrowserRouter使用的事H5的history API，不兼容IE9及以下版本。
+        BrowserRouter使用的是H5的history API，不兼容IE9及以下版本。
         HashRouter使用的是URL的hash值。
     2.path表现形式不一样
         BrowserRouter的路径中没有 #，例如：localhost:3000/about
