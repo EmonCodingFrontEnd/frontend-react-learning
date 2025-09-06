@@ -17,7 +17,7 @@ export default class LazyLoadDemo extends Component {
                 <div className="row">
                     <div className="col-xs-2 col-xs-offset-2">
                         <div className="list-group">
-                            {/*在Reeact中靠路由链接实现切换组件——编写路由链接*/}
+                            {/*在React中靠路由链接实现切换组件——编写路由链接*/}
                             <NavLink className="list-group-item" to="/about">About</NavLink>
                             <NavLink className="list-group-item" to="/home">Home</NavLink>
                         </div>
