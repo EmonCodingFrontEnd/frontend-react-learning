@@ -22,6 +22,8 @@ export default class App extends Component {
         BrowserRouter没有任何影响，因为state参数保存在history对象中。
         HashRouter刷新后会导致路由state参数丢失，因为state参数只保存在location对象中（HashRouter 依赖于 window.location.hash 来管理路由）。
     4.备注：HashRouter可以用于解决一些路径错误相关的问题。
+        举例：若index.html引入了非绝对路径的资源，使用BrowserRouter模式会导致资源无法加载。碰到类似；
+        Uncaught SyntaxError: Unexpected token '<' (at index.js:1:1)
      */
     render() {
         return (
