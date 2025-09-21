@@ -7,6 +7,8 @@ import {useMemo, useState} from 'react';
  *  useMemo 通过依赖数组 (deps) 来缓存一个计算成本很高的值：
  *      只有当依赖数组中的值发生变化时，useMemo 才会重新执行计算函数，返回新的值。
  *      如果依赖项没有变化，它就直接返回上一次缓存的计算结果，跳过昂贵的计算过程。
+ *
+ *     页面加载完成后，会触发执行一次；若后续被监听属性变化了，会再次执行。
  * @param props
  * @returns {JSX.Element}
  * @constructor
