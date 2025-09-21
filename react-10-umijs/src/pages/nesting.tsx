@@ -2,7 +2,6 @@ import React from 'react';
 import {Outlet} from "umi";
 import Header from "@/components/Header";
 import MyNavLink from "@/components/MyNavLink";
-import {useModel} from "@@/exports";
 
 function Nesting() {
     return (

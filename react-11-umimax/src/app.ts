@@ -1,13 +1,14 @@
 import logo from './logo.svg';
-import {RequestConfig} from '@umijs/max';
+import {RequestConfig, RuntimeReactQueryType} from '@umijs/max';
 import {message, notification} from "antd";
+import {QueryClient} from "@tanstack/react-query";
 
 // 运行时配置
 
 // 全局初始化数据配置，用于 Layout 用户信息和权限初始化
 // 更多信息见文档：https://umijs.org/docs/api/runtime-config#getinitialstate
 export async function getInitialState(): Promise<{ name: string }> {
-    return {name: '@umijs/max'};
+    return {name: ''};
 }
 
 // 布局配置的运行时配置，优先级比 .umirc.ts 中的配置高
@@ -29,6 +30,24 @@ console.error = (...args) => {
         return;
     }
     originalError.call(console, ...args);
+};
+
+// 运行时配置 reactQuery
+export const reactQuery: RuntimeReactQueryType = {
+    devtool: {
+        initialIsOpen: true,
+    },
+    queryClient: {
+        defaultOptions: {
+            queries: {
+                // 🟡 此配置具有的表现往往令人出乎意料，若无特殊需求，请默认关闭
+                refetchOnWindowFocus: false, // 关闭窗口聚焦重新获取（根据需求决定）
+                staleTime: 5 * 60 * 1000, // 最重要的配置：将默认过期时间改为 5 分钟（单位：毫秒）
+                gcTime: 10 * 60 * 1000,   // 缓存数据保留时间（v4 中叫 cacheTime），建议比 staleTime 长
+                retry: 1, // 失败重试次数
+            },
+        },
+    },
 };
 
 // ==================================================华丽的分割线==================================================
@@ -130,10 +149,10 @@ export const request: RequestConfig = {
     responseInterceptors: [
         (response) => {
             // 拦截响应数据，进行个性化处理
-            const {data}: any = response;
-            if (!data.success) {
-                message.error('请求失败！');
-            }
+            // const {data}: any = response;
+            // if (!data.success) {
+            //     message.error(data.errorMessage || '请求失败！');
+            // }
             return response;
         }
     ]
