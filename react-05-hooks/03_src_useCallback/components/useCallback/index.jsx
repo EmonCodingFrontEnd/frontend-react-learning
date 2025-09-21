@@ -7,6 +7,8 @@ import {useCallback, useState} from 'react';
  *  useCallback 通过依赖数组 (deps) 来解决这个问题：
  *      只有当依赖数组中的值发生变化时，useCallback 才会返回一个新的函数引用。
  *      如果依赖项没有变化，它就返回上一次缓存的同一个函数。
+ *
+ *      页面加载完成后，并不会触发执行，直到add被调用
  * @param props
  * @returns {JSX.Element}
  * @constructor

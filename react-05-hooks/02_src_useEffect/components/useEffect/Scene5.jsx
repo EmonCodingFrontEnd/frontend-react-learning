@@ -3,7 +3,7 @@ import {root} from "../../index";
 
 /**
  * 场景           useEffect写法	                                    类组件等效实现	           说明
- * 挂清理副作用	 useEffect(() => { return () => {...} }, [])	    componentWillUnmount()      若return语句之前有代码，也还是会执行的，相当于componentDidMount()
+ * 清理副作用	 useEffect(() => { return () => {...} }, [])	    componentWillUnmount()      若return语句之前有代码，也还是会执行的，相当于componentDidMount()
  * @param props
  * @returns {JSX.Element}
  * @constructor

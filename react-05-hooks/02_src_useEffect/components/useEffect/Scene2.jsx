@@ -3,7 +3,7 @@ import {root} from "../../index";
 
 /**
  * 场景           useEffect写法     	            类组件等效实现
- * 仅挂载执行一次	 useEffect(() => { ... })	    componentDidMount()
+ * 仅挂载执行一次	 useEffect(() => { ... }, [])	    componentDidMount()
  * @param props
  * @returns {JSX.Element}
  * @constructor

@@ -3,7 +3,7 @@ import {root} from "../../index";
 
 /**
  * 场景           useEffect写法	                类组件等效实现	                                            说明
- * 挂载+依赖更新	 useEffect(() => { ... })	    componentDidMount()+componentDidMount(中进行条件判断)         是一种浅监听；若是对象地址不变，不会引起响应
+ * 挂载+依赖更新	 useEffect(() => { ... },[xx])	    componentDidMount()+componentDidMount(中进行条件判断)         是一种浅监听；若是对象地址不变，不会引起响应
  * @param props
  * @returns {JSX.Element}
  * @constructor
